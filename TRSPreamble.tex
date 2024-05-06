@@ -1,0 +1,166 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% ALFONSO'S PREAMBLE FOR A NOTES DOCUMENT - 2024 %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% WELCOME ABROAD! Feel free to use  any of the code below. If you happen to come across anything
+% interesting in there, you can contact me through my personal email: sergius.mancha@gmail.com.
+
+% Happy hunting:)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% FONT CONFIGURATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fourier}
+\usepackage{plex-serif}
+\usepackage[basic,italic,symbolgreek]{mathastext}
+\usepackage[sfdefault]{plex-sans}
+
+\makeatletter
+\@for\@tempa:=a,b,c,d,e,h,i,k,l,m,n,o,q,r,s,t,u,v,w,x\do{%
+\MTsetmathskips{\@tempa}{0.5mu}{0.5mu}}%
+\makeatother
+
+\MTsetmathskips{f}{2.5mu}{0.5mu}
+\MTsetmathskips{g}{1.5mu}{0.5mu}
+\MTsetmathskips{j}{2.5mu}{0.5mu}
+\MTsetmathskips{p}{1.5mu}{0mu}
+\MTsetmathskips{y}{1.5mu}{0.5mu}
+\MTsetmathskips{z}{1mu}{0.5mu}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[spanish]{babel}
+
+\usepackage{graphicx, wrapfig}
+\usepackage{siunitx}
+\usepackage{floatrow}
+\usepackage[fleqn]{amsmath}
+\usepackage{amsfonts, gensymb, amssymb, amsmath}
+\usepackage{multirow, array}
+\usepackage{physics}
+\usepackage{tablefootnote}
+\usepackage{marginnote}
+\usepackage{ragged2e}
+\usepackage{changepage}
+\usepackage{stackengine}
+
+\usepackage{circuitikz}
+\usetikzlibrary{patterns, angles, quotes, arrows.meta}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+
+\usepackage{enumitem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% MATRIX AND VECTOR NOTATION CONFIG
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+% overline
+\newcommand{\dbloverline}[1]{\overline{\dbl@overline{#1}}}
+\newcommand{\dbl@overline}[1]{\mathpalette\dbl@@overline{#1}}
+\newcommand{\dbl@@overline}[2]{%
+  \begingroup
+  \sbox\z@{$\m@th#1\overline{#2}$}%
+  \ht\z@=\dimexpr\ht\z@-2\dbl@adjust{#1}\relax
+  \box\z@
+  \ifx#1\scriptstyle\kern-\scriptspace\else
+  \ifx#1\scriptscriptstyle\kern-\scriptspace\fi\fi
+  \endgroup
+}
+% underline
+\newcommand{\dblunderline}[1]{\@@underline{\dbl@underline{#1}}}
+\newcommand{\dbl@underline}[1]{\mathpalette\dbl@@underline{#1}}
+\newcommand{\dbl@@underline}[2]{%
+  \begingroup
+  \sbox\z@{$\m@th#1\@@underline{#2}$}%
+  \dp\z@=\dimexpr\dp\z@-2\dbl@adjust{#1}\relax
+  \box\z@
+  \ifx#1\scriptstyle\kern-\scriptspace\else
+  \ifx#1\scriptscriptstyle\kern-\scriptspace\fi\fi
+  \endgroup
+}
+\newcommand{\dbl@adjust}[1]{%
+  \fontdimen8
+  \ifx#1\displaystyle\textfont\else
+  \ifx#1\textstyle\textfont\else
+  \ifx#1\scriptstyle\scriptfont\else
+  \scriptscriptfont\fi\fi\fi 3
+}
+\makeatother
+
+% vectors and matrices
+\renewcommand{\vec}[1]{{%
+  \mspace{0.5mu}%
+  \underline{\mspace{-0.5mu}#1\kern-\scriptspace\mspace{-0.5mu}}%
+  \mspace{0.5mu}%
+}}
+\newcommand{\mat}[1]{{%
+  \mspace{0.5mu}%
+  \dblunderline{\mspace{-0.5mu}#1\kern-\scriptspace\mspace{-0.5mu}}%
+  \mspace{0.5mu}%
+}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% BOXES ENVIRONMENT & CONFIG
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Colored boxes
+\usepackage[many]{tcolorbox}
+\definecolor{qedCOLOR}{HTML}{D1495B}
+\definecolor{C1}{HTML}{D1495B}
+\definecolor{C2}{HTML}{D1495B}
+\definecolor{C3}{HTML}{D1495B}
+\tcbset{
+    sharp corners,
+    colback = white,
+    before skip = 0.2cm,    % add extra space before the box
+    after skip = 0.5cm      % add extra space after the box
+}                           % setting global options for tcolorbox
+\newtcolorbox{definition}{
+    blanker,
+    borderline west={3mm}{0pt}{qedCOLOR},
+    left=5mm,
+    bottom=2mm,
+    top=2mm
+}
+\newtcolorbox{qed}{
+    boxrule = 1pt,
+    colframe = black % frame color
+}
+\AtEndEnvironment{qed}{\hfill{$\blacksquare$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% MATH MACROS AND CONFIGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\E}{\mathbb{E}}
+%\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+
+\def\delequal{\mathrel{\ensurestackMath{\stackon[1pt]{=}{\scriptstyle\Delta}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\cc}[1]{%
+  \overline{#1}%
+}
+
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Tab.}
+\allowdisplaybreaks
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{2}
+
+\pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
