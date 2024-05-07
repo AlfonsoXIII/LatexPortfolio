@@ -1,0 +1,35 @@
+\begin{tikzpicture}
+    % Ejes de referencia
+    \node[inner sep=0pt] (russell) at (13,2.5)
+    {\includegraphics[width=.2\textwidth]{ejes.pdf}};
+    
+    % Bocinas de las antenas TX y RX
+    \draw (0, 0) -- ++(0, 1)node[above]{TX} -- ++(1.5, 0) -- ++(0.5, 0.5) -- ++(0, -1) coordinate (TX) -- ++(0, -1) -- ++(-0.5, 0.5) -- ++(-1.5, 0);
+
+    \draw (5, -5) -- ++(0, 1.5) -- ++(-0.5, 0.5) -- ++(2, 0) -- ++(-0.5, -0.5) -- ++(0, -1.5) -- ++(-1, 0)node[below]{RX};
+
+    % Dieléctricos y conductores, paneles
+    \filldraw[pattern=north east lines] (4.5, 3.5) rectangle ++(2.5, 0.35)node[above]{Conductor};
+    \filldraw[pattern=north east lines] (9, 1.25) rectangle ++(0.35, -2)node[below, rotate = 90]{Conductor};
+
+    % Lámina divisora de la onda
+    \filldraw[pattern=north west lines, rotate around = {45:(5.75, 0)}] (4.5, 0) rectangle ++(2.5, 0.35);
+
+    % Ondas sobre los paneles
+    \draw[->, thick, color=black!90] (TX.west) ++(0.25, 0)node[label={[label distance=1pt]30:$\Vec{E}_1$}]{} -- ++(3, 0) coordinate (E1); % E1
+
+    \draw[->, thick, color=black!90] (E1.west) ++(0, 0.25)node[label={[label distance=1pt]120:$\Vec{E}_2$}]{}-- ++(0, 2.5) coordinate (E2); % E2
+    \draw[<-, thick, color=black!90] (E1.west) ++(0.5, 0.25) coordinate (E3) -- ++(0, 2.5) node[label={[label distance=1pt]-30:$\Vec{E}_3$}]{}; % E3
+
+    \draw[->, thick, color=black!90] (E1.west) ++(1.25, 0) node[label={[label distance=0.8pt]10:$\Vec{E}_4$}]{}-- ++(2.25, 0); % E4
+    \draw[<-, thick, color=black!90] (E1.west) ++(0.9, -0.5)-- ++(2.6, 0)node[label={[label distance=1pt]-120:$\Vec{E}_5$}]{}; % E5
+
+    \draw[->, thick, color=black!90] (E3.south) ++(0, -1)node[label={[label distance=1pt]-30:$\Vec{E}_6$}]{} -- ++(0, -2.5); % E6
+
+    % Acotaciones
+    \draw[dashed] (E2.west) ++ (-1, 0) -- ++(-4.8, 0) ++(-0.2, 0) coordinate (A);
+    \draw[<->] (A)node[label={[label distance=1pt]-50:$L_1$}]{} -- ++(0, -2.25);
+    
+    \draw[dashed] (E1.west) ++(0.9, -0.5) ++(2.6, 0) ++(0, -1) -- ++(0, -4.3) ++(0, -0.2) coordinate (B);
+    \draw[<->] (B)node[label={[label distance=1pt]-200:$L_2$}]{} -- ++(-2.5, 0);
+\end{tikzpicture}

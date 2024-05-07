@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+    % Conductores
+    \draw[-, thick] (-2, 3) -- ++(0, -6);
+    \draw[{Stealth[length=2.5mm]}-, thick] (2, 3.3)node[right]{$\hat{x}$} -- ++(0, -6.3);
+    \draw[-{Stealth[length=2.5mm]}, thick] (2, 0) -- ++(1.5, 0)node[above]{$\hat{z}$};
+
+    \fill[pattern = north east lines] (-2, 2.9) rectangle ++(-1, -5.8)node[above, rotate = 90]{Conductor};
+    \fill[pattern = north east lines] (2, 2.9) rectangle ++(1, -5.8)node[below, rotate = 90]{Conductor};
+
+    % Campo eléctrico
+    \draw (-2, -2)node[circle, fill, color=black!90, inner sep = 0pt, minimum size = 4pt]{} sin ++(1, 1)node[above]{$\Vec{E}$} cos ++(1, -1)node[circle, fill, color=black!90, inner sep = 0pt, minimum size = 4pt]{} sin ++(1, 1) cos ++(1, -1)node[circle, fill, color=black!90, inner sep = 0pt, minimum size = 4pt]{};
+
+    % Campo magnético
+    \draw (-2, 2)node[circle, fill, color=black!90, inner sep = 0pt, minimum size = 4pt]{} cos ++(1, -1)node[circle, fill, color=black!90, inner sep = 0pt, minimum size = 4pt]{} sin ++(1, 1)node[above]{$\Vec{H}$} cos ++(1, -1)node[circle, fill, color=black!90, inner sep = 0pt, minimum size = 4pt]{} sin ++(1, 1)node[circle, fill, color=black!90, inner sep = 0pt, minimum size = 4pt]{};
+
+    % Linea de referencia
+    \draw[dashed] (-2, -1) -- (2, -1);
+    \draw[dashed] (-2, -2) -- (2, -2);
+
+    \draw[dashed] (-2, 2) -- (2, 2);
+    \draw[dashed] (-2, 1) -- (2, 1);
+
+    % Cota inferior
+    \draw[<->] (-2, -3.25) -- ++(2, 0)node[below]{$L$} -- ++(2, 0);
+\end{tikzpicture}

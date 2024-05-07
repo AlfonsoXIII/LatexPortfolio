@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+    % Plano de separación
+    \draw[{Stealth[length=2.5mm]}-, thick] (0, 3.4)node[right]{$\hat{x}$} -- ++(0, -6.5)node[below]{$z = 0$};
+    \draw[{Stealth[length=2.5mm]}-, thick] (-3.25, 0)node[above, name=X]{$-\hat{z}$} -- ++(3.25, 0);
+
+    % Conductor
+    \fill[pattern=north east lines] (0, 3)coordinate rectangle ++(3, -6)node[below, rotate = 90]{Conductor};
+
+    % Ondas incidiento sobre el plano de separación z = 0
+    \draw[->] (-2.75, -2.75) coordinate (I) -- ++(2.5, 2.5) coordinate (IO);
+    \draw[<-] (-2.75, 2.75) coordinate (R) -- ++(2.5, -2.5);
+    \coordinate (OR) (0, 0);
+
+    \draw[->] (I)node[circle, fill, color=black!90, inner sep = 0pt, minimum size = 4pt]{} -- ++(-0.5, 0.5)node[above]{$\hat{e}_{i\parallel}$};
+    \draw[dashed] (I)node[label={[label distance=0.1pt]-10:$\hat{e}_{i\perp}$}]{} circle (5pt);
+    \draw[->] (I) -- ++(0.5, 0.5)node[label={[label distance=0.1pt]0:$\hat{k}_i$}]{};
+
+    \draw[->] (-2.25, 2.25)node[circle, fill, color=black!90, inner sep = 0pt, minimum size = 4pt]{} -- ++(-0.5, 0.5)node[above]{$\hat{k}_r$};
+    \draw[dashed] (-2.25, 2.25)node[label={[label distance=0.15pt]0:$\hat{e}_{r\perp}$}]{} circle (5pt);
+    \draw[->] (-2.25, 2.25) -- ++(0.5, 0.5)node[label={[label distance=0.1pt]0:$\hat{e}_{r\parallel}$}]{};
+    
+    
+    \draw pic[draw, angle radius=0.8cm,"$\theta_{r}$" shift={(-5mm,3mm)}] {angle=R--OR--X};
+    \draw pic[draw, angle radius=0.8cm,"$\theta_{i}$" shift={(-5mm,-3mm)}] {angle=X--OR--I};
+\end{tikzpicture}

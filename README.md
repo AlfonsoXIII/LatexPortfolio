@@ -56,7 +56,7 @@ marginparwidth=4cm
 \input{preamble}
 ```
 
-Para la manipulación de la notación vectorial, se ha incluído nuevas macros que permiten generar la 
+Para la manipulación de la notación vectorial, se ha incluído nuevas macros que permiten generar vectores y matrices denotados a partir de un subrallado simple y un subrallados doble.
 
 ```TeX
 % MATRIX AND VECTOR NOTATION CONFIG
@@ -109,11 +109,44 @@ Para la manipulación de la notación vectorial, se ha incluído nuevas macros q
 }}
 ```
 
+Para el formateo y estilo de definiciones y demostración, he diseñado un par de marcos simples a partir del paquete <i>tcolorbox</i>.
+
+```TeX
+%Colored boxes
+\usepackage[many]{tcolorbox}
+\definecolor{qedCOLOR}{HTML}{D1495B}
+\definecolor{C1}{HTML}{D1495B}
+\definecolor{C2}{HTML}{D1495B}
+\definecolor{C3}{HTML}{D1495B}
+\tcbset{
+    sharp corners,
+    colback = white,
+    before skip = 0.2cm,    
+    after skip = 0.5cm
+}                         
+\newtcolorbox{definition}{
+    blanker,
+    borderline west={3mm}{0pt}{qedCOLOR},
+    left=5mm,
+    bottom=2mm,
+    top=2mm
+}
+\newtcolorbox{qed}{
+    boxrule = 1pt,
+    colframe = black
+}
+\AtEndEnvironment{qed}{\hfill{$\blacksquare$}}
+```
+
 Todos los gráficos includios en los documentos han sido producidos íntegramente gracias a <i>TikZ</i>.A continuación se muestran algunos ejemplos más del uso de la libreria aplicados en reportes de laboratorio para la creación de diagramas de soporte. 
 
 <p align="center">
 <img src="./imagenes/INC1_1.jpg" width=45%>
 <img src="./imagenes/INC1_2.jpg" width=45%>
+</p>
+<p align="center">
+<img src="./imagenes/EAFO1.jpg" width=45%>
+<img src="./imagenes/EAFO2.jpg" width=45%>
 </p>
 
 ## Formato de documentos ajedrecísticos
@@ -129,12 +162,26 @@ En esta sección podrá consultar algunos ejemplos de los documentos producidos 
 <img src="./imagenes/chess4.jpg" width=45%>
 </p>
 
-Los documentos estan formateados de acuerdo con la tradición en la produción bibliográfica en el mundo del ajedrez, dividiendo el folio en dos cómodas columnas en las que se disponen tanto comentarios, como diagramas y notación algebraica. Para la manipulación de los símbolos ajedrecísticos, piezas y notación en comentarios, he utilizado el paquete <i>xskak</i>.
+Los documentos estan formateados de acuerdo con la tradición en la produción bibliográfica en el mundo del ajedrez, dividiendo el folio en dos cómodas columnas en las que se disponen tanto comentarios, como diagramas y notación algebraica. Para la manipulación de los símbolos ajedrecísticos, piezas y notación en comentarios, he utilizado el paquete <i>xskak</i>
 
-IMAGEN
+<p align="center">
+<img src="./imagenes/chess6.jpg" width=90%>
+</p>
 
 De la misma manera para renderizar los diagramas, que a partir del propio paquete pueden ser generados utilizando notación FEN, o bien la secuencia de partida que se va registrando a lo largo del documento a partir de <i>\mainline{ }</i>.
 
-IMAGEN
+<p align="center">
+<img src="./imagenes/chess5.jpg" width=90%>
+</p>
 
-Los títulos 
+Los títulos de los documentos estilo <i>libro</i> han sido definidos a partir de una reescriptura de los comandos de sección y subsección que vienen dados por LaTeX.
+
+```TeX
+% TITLE FORMATTING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{capitulos}
+\setcounter{capitulos}{1}
+\newcommand{\capitulo}[2]{{\noindent\huge \textbf{CAPÍTULO \Roman{capitulos}.} }{\Huge\textbf{\MakeUppercase{#1}.}}\bigbreak{\noindent\Large\variation[level=1]{#2}}\addcontentsline{toc}{section}{{\footnotesize CAPÍTULO \Roman{capitulos}} \makefirstuc{#1}. \variation[level=1]{#2}}\addtocounter{capitulos}{1}}
+
+\newcommand{\seccion}[1]{\large\noindent\textbf{#1}\addcontentsline{toc}{subsection}{#1}\bigbreak}
+```

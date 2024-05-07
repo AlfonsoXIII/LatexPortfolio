@@ -35,7 +35,9 @@
 
 % PACKAGES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[spanish]{babel}
+\usepackage[catalan]{babel}
+\usepackage{titlesec}
+\usepackage{mfirstuc}
 
 \usepackage{graphicx, wrapfig}
 \usepackage{siunitx}
@@ -51,7 +53,7 @@
 \usepackage{stackengine}
 
 \usepackage{circuitikz}
-\usetikzlibrary{patterns, angles, quotes, arrows.meta}
+\usetikzlibrary{patterns, angles, quotes, arrows.meta, decorations.markings}
 \usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
 
@@ -164,3 +166,15 @@
 \pgfmathdeclarefunction{gauss}{2}{%
   \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% TITLE FORMATTING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{temas}
+\setcounter{temas}{1}
+\newcommand{\tema}[1]{{\noindent\Large \textbf{TEMA \Roman{temas}.} }\\\noindent{\Huge\textbf{\MakeUppercase{#1}}}\addcontentsline{toc}{section}{{\footnotesize TEMA \Roman{temas}} \makefirstuc{#1}}\addtocounter{temas}{1}\bigbreak}
+
+\newcommand{\seccion}[1]{{\Large\noindent\textbf{#1}\addcontentsline{toc}{subsection}{#1}}}
+\newcommand{\apartado}[1]{{\large\noindent\textbf{#1}\addcontentsline{toc}{subsubsection}{#1}}}
